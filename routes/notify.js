@@ -1,6 +1,5 @@
 const express = require('express')
 const router = express.Router()
-const addClown = require('../actions/addClownToDatabase');
 const sendWebhook = require('../actions/sendWebhook');
 const notifyNodes = require('../actions/notifyNodes');
 const mongoose = require('mongoose');

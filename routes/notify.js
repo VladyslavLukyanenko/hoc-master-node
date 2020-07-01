@@ -19,7 +19,7 @@ const payload = {
     reason: "Fraud"
 };
 sendWebhook({...payload, reason, node});
-notifyNodes(payload);
+notifyNodes.notify(payload);
 return response.status(200).json({success: true});
 });
 

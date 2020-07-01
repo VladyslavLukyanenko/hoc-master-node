@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const sendWebhook = require('../actions/sendWebhook');
+const queue = require('../queues/webhookQueue');
 const notifyNodes = require('../actions/notifyNodes');
 const mongoose = require('mongoose');
 const Node = mongoose.model('Node');
@@ -18,7 +18,7 @@ const payload = {
     cards,
     reason: "Fraud"
 };
-sendWebhook({...payload, reason, node});
+queue.add({info: {...payload, reason, node}});
 notifyNodes.notify(payload);
 return response.status(200).json({success: true});
 });
